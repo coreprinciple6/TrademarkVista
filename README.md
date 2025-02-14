@@ -1,18 +1,19 @@
 # TrademarkVista
-This project aims to create a **free, publicly accessible** platform to query and explore U.S. Patent and Trademark Office (USPTO) trademark data. It combines **data parsing**, a **relational database**, **GraphQL APIs**, and **large language models (LLMs)** to allow natural language queries and structured responses about trademarks. Test it out [here](Link to be added).
+This project aims to create a **free, publicly accessible** platform to query and explore U.S. Patent and Trademark Office (USPTO) trademark data. It combines **data parsing**, a **relational database**, **GraphQL APIs**, and **large language models (LLMs)** to allow natural language queries and structured responses about trademarks. Test it out [here](https://trademarkvista.onrender.com/graphql?query=%7B%0A%20%20searchMarks(keyword:%20%22NTHLIFE%22)%20%7B%0A%20%20%20%20id%0A%20%20%20%20categoryCode%0A%20%20%20%20markIdentification%20%20%0A%20%20%20%20serialNumber%0A%20%20%20%20caseFileOwners%0A%20%20%20%20status%0A%20%20%20%20xmlFilename%0A%20%20%7D%0A%7D).
 
 ## Table of Contents
-- [Project Objectives](#project-objectives)  
+- [Project Objectives](#project-objectives)
 - [High-Level Architecture](#high-level-architecture)  
 - [Technical Tools & Components](#technical-tools--components)  
 - [Implementation Details](#implementation-details)  
-  - [Part 1: Data Parsing and PostgreSQL Setup](#part-1-data-parsing-and-postgresql-setup)  
-  - [Part 2: Simple QA UI](#part-2-simple-qa-ui)  
-  - [Part-3: GraphQL API with Flask and Graphene](#part-3-graphql-api-with-flask-and-graphene)  
-  - [Part-4: Natural Language Query Processing with an LLM](#part-4-natural-language-query-processing-with-an-llm)  
-  - [Part-5: Conversational Workflow with LangChain](#part-5-conversational-workflow-with-langchain)  
-  - [Part-6: Hosting the Project](#part-6-hosting-the-project)  
-- [Future Enhancements](#future-enhancements)  
+  - [Part 1: Data Parsing and PostgreSQL Setup](#part-1-data-parsing-and-postgresql-setup) :white_check_mark:
+  - [Part 2: Simple QA UI](#part-2-simple-qa-ui) :hourglass_flowing_sand:
+  - [Part-3: GraphQL API with Flask and Graphene](#part-3-graphql-api-with-flask-and-graphene) :white_check_mark: 
+  - [Part-4: Natural Language Query Processing with an LLM](#part-4-natural-language-query-processing-with-an-llm) :hourglass_flowing_sand: 
+  - [Part-5: Conversational Workflow with LangChain](#part-5-conversational-workflow-with-langchain) :white_check_mark: 
+  - [Part-6: Hosting the Project](#part-6-hosting-the-project) :white_check_mark:
+- [Future Enhancements](#future-enhancements)
+- [Latest Updates](#latest-updates)
 
 ---
 ## Project Objectives
@@ -152,10 +153,8 @@ This project aims to create a **free, publicly accessible** platform to query an
    - LangChain re-prompts the LLM to update or refine the GraphQL query accordingly.
 
 ### Part-6: Hosting the Project
-1. **Containerization (Optional)**:
-   - Containerize the app (Flask + GraphQL + LLM) using Docker.
 
-2. **Hosting Platforms**:
+1. **Hosting Platforms**:
    - **Render**: Similar free-tier approach for hosting web services and Postgres.
 
 ---
@@ -167,3 +166,10 @@ This project aims to create a **free, publicly accessible** platform to query an
    - Enhance the LLM with training data specific to USPTO queries for more accurate GraphQL generation.
 3. **Analytics Dashboard**:
    - Visualize trademark trends, popular classes, or top owners in real-time.
+  
+## Latest Updates
+- Direct GraphQL to final output is done :white_check_mark: and its availabe [here](https://trademarkvista.onrender.com/graphql?query=%7B%0A%20%20searchMarks(keyword:%20%22NTHLIFE%22)%20%7B%0A%20%20%20%20id%0A%20%20%20%20categoryCode%0A%20%20%20%20markIdentification%20%20%0A%20%20%20%20serialNumber%0A%20%20%20%20caseFileOwners%0A%20%20%20%20status%0A%20%20%20%20xmlFilename%0A%20%20%7D%0A%7D)
+- Testing with a small subset of dataset for storage restrictions
+- FInetuning SmolLM for better info extraction before GraphQL layer
+- Will add simple UI for better User experience
+
