@@ -14,7 +14,6 @@ class TrademarkQA:
     def process_query(self, user_question: str):
         try:
             # Generate GraphQL query
-            print('process_query-> User question:', user_question)
             graphql_query = self.llm.get_graphql_query(user_question)
             print('Generated GraphQL query:', graphql_query)
             
