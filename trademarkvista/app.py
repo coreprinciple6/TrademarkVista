@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session, declarative_base
 from sqlalchemy import Column, Integer, String, Text
 
 # Get DATABASE_URL from environment
-DATABASE_URL = os.environ.get('postgresql://trademark_db_user:1dSBGAMgcYUDSgLiPzgQkjxirmoKzuyi@dpg-cunb8mq3esus73cf1kog-a.oregon-postgres.render.com/trademark_db')
+DATABASE_URL = os.environ.get("DATABASE_URL")
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
