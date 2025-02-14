@@ -1,5 +1,6 @@
 # TrademarkVista
-This project aims to create a **free, publicly accessible** platform to query and explore U.S. Patent and Trademark Office (USPTO) trademark data. It combines **data parsing**, a **relational database**, **GraphQL APIs**, and **large language models (LLMs)** to allow natural language queries and structured responses about trademarks. Test it out [here](https://trademarkvista.onrender.com/graphql?query=%7B%0A%20%20searchMarks(keyword:%20%22NTHLIFE%22)%20%7B%0A%20%20%20%20id%0A%20%20%20%20categoryCode%0A%20%20%20%20markIdentification%20%20%0A%20%20%20%20serialNumber%0A%20%20%20%20caseFileOwners%0A%20%20%20%20status%0A%20%20%20%20xmlFilename%0A%20%20%7D%0A%7D).
+This project aims to create a **free, publicly accessible** platform to query and explore U.S. Patent and Trademark Office (USPTO) trademark data. It combines **data parsing**, a **relational database**, **GraphQL APIs**, and **large language models (LLMs)** to allow natural language queries and structured responses about trademarks. Test it out [here](Link to be added).<img width="618" alt="image" src="https://github.com/user-attachments/assets/f73e5b93-982c-4200-a022-3319225f3d28" />
+
 
 ## Table of Contents
 - [Project Objectives](#project-objectives)
@@ -69,7 +70,7 @@ This project aims to create a **free, publicly accessible** platform to query an
    - **Graphene**: A Python library to build GraphQL schemas and handle requests.
 
 5. **LLM for Natural Language Processing**
-   - **LLaMA** or **SmolLM** for interpreting user questions.
+   -  **SmolLM 135m** for interpreting user questions.
 
 6. **LangChain**
    - Orchestrates the conversation flow, context management, and retrieval of relevant data.
@@ -127,6 +128,7 @@ This project aims to create a **free, publicly accessible** platform to query an
      - `trademarkByOwner(ownerName: String!)`.
      - `trademarksByClass(classNumber: Int!)`.
    - Resolvers map GraphQL queries to database queries.
+   - advanced resolvers to handle complex queries
 
 ### Part-4: Natural Language Query Processing with an LLM
 1. **Goal**:
@@ -134,8 +136,7 @@ This project aims to create a **free, publicly accessible** platform to query an
 
 2. **Model Setup**:
    - Provide the model with a prompt or instructions on how to interpret user queries.
-   - The user’s question is fed into the LLM along with context about the GraphQL schema and examples.
-   - The LLM outputs a string representing a valid GraphQL query (including filters and fields).
+   - advanced prompt engineering to handle complex queries with filtering
    - Check for correctness. If the query is invalid, handle errors gracefully.
 
 ### Part-5: Conversational Workflow with LangChain
@@ -169,7 +170,17 @@ This project aims to create a **free, publicly accessible** platform to query an
   
 ## Latest Updates
 - Direct GraphQL to final output is done :white_check_mark: and its availabe [here](https://trademarkvista.onrender.com/graphql?query=%7B%0A%20%20searchMarks(keyword:%20%22NTHLIFE%22)%20%7B%0A%20%20%20%20id%0A%20%20%20%20categoryCode%0A%20%20%20%20markIdentification%20%20%0A%20%20%20%20serialNumber%0A%20%20%20%20caseFileOwners%0A%20%20%20%20status%0A%20%20%20%20xmlFilename%0A%20%20%7D%0A%7D)
+- Testing with natural language endpoint (without UI) can be done by running the folowing command
+  ```
+  Link_to_site = ''
+  !curl -X POST f'{Link_to_site}/api/query \
+     -H "Content-Type: application/json" \
+     -d '{"question": "Find trademarks with NTHLIFE in category 40"}'
+  ```
+  <img width="591" alt="image" src="https://github.com/user-attachments/assets/c7fdf825-cc51-44ec-bb28-5c1fc4eaa730" />
+
 - Testing with a small subset of dataset for storage restrictions
-- FInetuning SmolLM for better info extraction before GraphQL layer
+- prompt engineering for handling advanced filtering
+- advanced resolvers to handle complex queries
 - Will add simple UI for better User experience
 
