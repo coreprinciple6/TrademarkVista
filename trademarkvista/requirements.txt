@@ -13,3 +13,4 @@ python-dotenv
 langchain_community
 openai
 transformers
+langchain_huggingface
