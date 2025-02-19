@@ -1,7 +1,5 @@
 # TrademarkVista
-This project aims to create a **free, publicly accessible** platform to query and explore U.S. Patent and Trademark Office (USPTO) trademark data. It combines **data parsing**, a **relational database**, **GraphQL APIs**, and **large language models (LLMs)** to allow natural language queries and structured responses about trademarks. Test it out [here](Link to be added).<img width="618" alt="image" src="https://github.com/user-attachments/assets/f73e5b93-982c-4200-a022-3319225f3d28" />
-
-
+This project aims to create a **free, publicly accessible** platform to query and explore U.S. Patent and Trademark Office (USPTO) trademark data. It combines **data parsing**, a **relational database**, **GraphQL APIs**, and **large language models (LLMs)** to allow natural language queries and structured responses about trademarks.
 ## Table of Contents
 - [Project Objectives](#project-objectives)
 - [High-Level Architecture](#high-level-architecture)  
@@ -14,7 +12,9 @@ This project aims to create a **free, publicly accessible** platform to query an
   - [Part-5: Conversational Workflow with LangChain](#part-5-conversational-workflow-with-langchain) :white_check_mark: 
   - [Part-6: Hosting the Project](#part-6-hosting-the-project) :white_check_mark:
 - [Future Enhancements](#future-enhancements)
+- [Local Deployment](#local-deployment)
 - [Latest Updates](#latest-updates)
+
 
 ---
 ## Project Objectives
@@ -65,6 +65,7 @@ This project aims to create a **free, publicly accessible** platform to query an
 
 3. **Backend Framework**
    - **Flask**: A lightweight Python web framework to serve the GraphQL API.
+   - **Streamlit**: For a simple web interface
 
 4. **GraphQL**
    - **Graphene**: A Python library to build GraphQL schemas and handle requests.
@@ -102,7 +103,7 @@ This project aims to create a **free, publicly accessible** platform to query an
 
 ### Part 2: Simple QA UI
 1. **Objective**:
-   - Offers a minimal web-based or command-line interface for end-users.
+   - Offers a minimal web-based or command-line interface for end-users using streamlit
    - Let users type in questions like:
      - *“Is there a trademark with the phrase ‘DreamSpark’ in Class 42?”*
      - *“Show me all marks from ‘XYZ Corp’ that are currently live and in Class 25.”*
@@ -157,7 +158,8 @@ This project aims to create a **free, publicly accessible** platform to query an
 
 1. **Hosting Platforms**:
    - **Render**: Similar free-tier approach for hosting web services and Postgres.
-
+   - Direct GraphQL to final output is done :white_check_mark: and its availabe [here](https://trademarkvista.onrender.com/graphql?query=%7B%0A%20%20searchMarks(keyword:%20%22NTHLIFE%22)%20%7B%0A%20%20%20%20id%0A%20%20%20%20categoryCode%0A%20%20%20%20markIdentification%20%20%0A%20%20%20%20serialNumber%0A%20%20%20%20caseFileOwners%0A%20%20%20%20status%0A%20%20%20%20xmlFilename%0A%20%20%7D%0A%7D)
+<img width="618" alt="image" src="https://github.com/user-attachments/assets/f73e5b93-982c-4200-a022-3319225f3d28" />
 ---
 
 ## Future Enhancements
@@ -167,9 +169,15 @@ This project aims to create a **free, publicly accessible** platform to query an
    - Enhance the LLM with training data specific to USPTO queries for more accurate GraphQL generation.
 3. **Analytics Dashboard**:
    - Visualize trademark trends, popular classes, or top owners in real-time.
-  
+--- 
+## Local Deployment
+- Make sure you have the postgres database locally (demo db included in repo)
+- Run 'TMV_local/flask_app.py'
+- Run 'streamlit run TMV_local/streamlit_app.py'
+<img width="698" alt="image" src="https://github.com/user-attachments/assets/ffda2880-87d3-4962-a5d7-b274b5df9677" />
+
+---
 ## Latest Updates
-- Direct GraphQL to final output is done :white_check_mark: and its availabe [here](https://trademarkvista.onrender.com/graphql?query=%7B%0A%20%20searchMarks(keyword:%20%22NTHLIFE%22)%20%7B%0A%20%20%20%20id%0A%20%20%20%20categoryCode%0A%20%20%20%20markIdentification%20%20%0A%20%20%20%20serialNumber%0A%20%20%20%20caseFileOwners%0A%20%20%20%20status%0A%20%20%20%20xmlFilename%0A%20%20%7D%0A%7D)
 - Testing with natural language endpoint (without UI) can be done by running the folowing command
   ```
   Link_to_site = ''
@@ -182,5 +190,4 @@ This project aims to create a **free, publicly accessible** platform to query an
 - Testing with a small subset of dataset for storage restrictions
 - prompt engineering for handling advanced filtering
 - advanced resolvers to handle complex queries
-- Will add simple UI for better User experience
 
