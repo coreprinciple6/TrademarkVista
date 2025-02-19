@@ -4,8 +4,8 @@ import graphene
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session, declarative_base
 from sqlalchemy import Column, Integer, String, Text
-from trademarkvista.TrademarkQA import TrademarkQA
-from trademarkvista.SmolLMWrapper import SmolLMWrapper
+from TrademarkQA import TrademarkQA
+from SmolLMWrapper import SmolLMWrapper
 from flask import request, jsonify
 
 # Flask App
