@@ -1,9 +1,17 @@
 psycopg2-binary
 sqlalchemy
 pandas
+langchain
 flask
 flask-graphql
 graphene-sqlalchemy
 gunicorn
+transformers
 graphql-core
+huggingface_hub
 python-dotenv
+langchain_community
+openai
+transformers
+langchain_huggingface
+streamlit

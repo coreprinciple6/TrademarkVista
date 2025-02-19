@@ -5,9 +5,6 @@ import graphene
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session, declarative_base
 from sqlalchemy import Column, Integer, String, Text
-# from TrademarkQA import TrademarkQA
-# from SmolLMWrapper import SmolLMWrapper
-# from flask import request, jsonify
 
 # Flask App
 app = Flask(__name__)
@@ -73,28 +70,6 @@ class Query(graphene.ObjectType):
             ).scalars().all()
 
 schema = graphene.Schema(query=Query)
-
-# # Initialize QA components
-# llm_wrapper = SmolLMWrapper()
-# qa_system = TrademarkQA(llm_wrapper, schema)
-
-# # Add these new routes to your existing Flask app
-# @app.route('/api/query', methods=['POST'])
-# def query_endpoint():
-#     data = request.json
-#     user_question = data.get('question')
-    
-#     if not user_question:
-#         return jsonify({"error": "No question provided"}), 400
-        
-#     result = qa_system.process_query(user_question)
-#     return jsonify(result)
-
-# @app.route('/api/chat_history', methods=['GET'])
-# def get_history():
-#     messages = qa_system.get_chat_history()
-#     return jsonify({"history": [str(m) for m in messages]})
-
 app.add_url_rule(
     '/graphql',
     view_func=GraphQLView.as_view(
